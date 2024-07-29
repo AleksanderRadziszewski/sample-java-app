@@ -1,7 +1,10 @@
 pipeline {
     agent any
-    tools {
+        tools {
         maven 'maven:3.9.8'
+    }
+        triggers {
+        cron('21 10 * * 1-5')
     }
     stages {
         stage('Build') {
@@ -18,6 +21,11 @@ pipeline {
                     junit 'target/surefire-reports/*.xml'
                 }
             }
+        }
+    }
+    post {
+        always {
+            junit 'target/surefire-reports/*.xml'
         }
     }
 }
