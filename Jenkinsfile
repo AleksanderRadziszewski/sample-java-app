@@ -4,7 +4,7 @@ pipeline {
         maven 'maven:3.9.8'
     }
         triggers {
-        cron('21 10 * * 1-5')
+        cron('36 8 * * 1-5')
     }
     stages {
         stage('Build') {
